@@ -1,0 +1,55 @@
+
+package com.crm.keepshopping.leadtest;
+
+import org.openqa.selenium.Alert;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.crm.comcast.genericutility.Baseclass1;
+import com.crm.comcast.objectrepositoryUtility.Createleadpage;
+import com.crm.comcast.objectrepositoryUtility.Homepage;
+import com.crm.comcast.objectrepositoryUtility.LeadInfo;
+import com.crm.comcast.objectrepositoryUtility.Leadpage;
+
+public class Tc_21 extends Baseclass1{
+	@Test(groups="smokeTest")
+	public void cancellead()
+	{
+		 Homepage hp = new Homepage(driver);
+		 hp.getLeadlink().click();
+		 
+		  Leadpage lead = new Leadpage(driver);
+	      lead.getCreateleadbtn().click();
+	      
+	      Createleadpage clp = new Createleadpage(driver);
+	      clp.getCancelbtn().click();
+	      String t = "Last Name cannot be empty";
+	  	Alert a = driver.switchTo().alert();
+	      String q = a.getText();
+	      System.out.println(q);
+	            a.accept();
+	            Assert.assertEquals(q,t);
+
+}
+	@Test(groups="regression")
+
+	public void convertlead4()
+	{
+		Homepage hp = new Homepage(driver);
+		hp.getLeadlink().click();
+		
+		Leadpage lp = new Leadpage(driver);
+		lp.getAnylead().click();
+		
+		LeadInfo li = new LeadInfo(driver);
+		li.getConvertleadlink().click();
+		
+
+		
+		wlib.waitForElemnetVisibality(driver, li.getOrganisationcheckbox());
+		li.getOrganisationcheckbox().click();	
+		li.getSavebtnn().click();
+	}
+
+
+}

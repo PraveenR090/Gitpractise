@@ -1,0 +1,117 @@
+package com.crm.comcast.genericutility;
+
+
+	
+
+	import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
+import com.crm.comcast.objectrepositoryUtility.Homepage;
+import com.crm.comcast.objectrepositoryUtility.Login;
+
+	public class Baseclass1 {
+		/*Object creation*/
+		public FileUtility fLib = new FileUtility();
+		public ExcelUtility excel = new ExcelUtility();
+		public JavaUtility jLib = new JavaUtility();
+		public WebDriverUtility wlib = new WebDriverUtility();
+		public DataBaseUtilities dbLb = new DataBaseUtilities();
+		public WebDriver driver;
+		public static WebDriver staticDriver;
+		
+		/*@BeforeSuite(groups = {"smokeTest" , "regressionTest"})
+		public void configBeforeSuite() throws Throwable {
+			System.out.println("==============Connect to DB=============");
+			dbLb.connectToDB();
+		}*/
+		
+		@BeforeClass
+		public void configBeforeClass() throws Throwable {
+			System.out.println("============launch the Browser==========");
+			/* launch the Browser*/
+			/*read Common Data*/
+			String URL = fLib.getPropertyKeyValue("url");
+
+			String BROWSER = fLib.getPropertyKeyValue("browser");
+			
+			 if(BROWSER.equals("firefox")) {
+			    driver = new FirefoxDriver();
+			 }else if(BROWSER.equals("chrome")) {
+				 driver = new ChromeDriver();
+			 }else if(BROWSER.equals("ie")) {
+				 driver = new InternetExplorerDriver();
+			 }else {
+				 driver = new ChromeDriver();
+			 }
+			staticDriver=driver;
+			 wlib.waitForPageToLoad(driver);
+			 driver.get(URL);
+		}
+		
+		/*@Parameters("BROWSER")
+		//@BeforeClass(groups = {"smokeTest" , "regressionTest"})
+		public void configBeforeClassParllel(String Browser) throws Throwable {
+			System.out.println("============launch the Browser==========");
+			/* launch the Browser*/
+			/*String URL = fLib.getPropertyKeyValue("url");
+
+			
+			
+			 if(Browser.equals("firefox")) {
+			    driver = new FirefoxDriver();
+			 }else if(Browser.equals("chrome")) {
+				 driver = new ChromeDriver();
+			 }else if(Browser.equals("ie")) {
+				 driver = new InternetExplorerDriver();
+			 }else {
+				 driver = new ChromeDriver();
+			 }
+			
+			 wlib.waitForPageToLoad(driver);
+			 driver.get(URL);
+		}*/
+		
+		
+		@BeforeMethod
+		public void configBeforeMtd() throws Throwable {
+			System.out.println("====login to Application=====");
+			/*step-1 : login to Application*/
+			String USERNAME = fLib.getPropertyKeyValue("username");
+			String PASSWORD = fLib.getPropertyKeyValue("password");
+			Login lp = new Login(driver);
+			lp.loginToAPP(USERNAME, PASSWORD);
+		}
+		
+		@AfterMethod
+		public void configAfterMethod() throws Throwable {
+			System.out.println("====logout from Application=====");
+			Homepage hp = new Homepage(driver);
+		      /*step-* : logout */
+				  hp.logout();
+				 /* Login lp = new Login(driver);
+				  wlib.waitForElemnetVisibality(driver,lp.getLoginBtn());  */    
+	    }
+		
+		
+		@AfterClass
+		public void configAfterClass() {
+			System.out.println("============Close the Browser==========");
+			driver.close();
+		}
+		
+	/*	@AfterSuite(groups = {"smokeTest" , "regressionTest"})
+		public void configAfterSuite() throws Throwable {
+			dbLb.closeDb();
+			System.out.println("==============close db Connection=============");
+		}*/
+
+	}
+
+

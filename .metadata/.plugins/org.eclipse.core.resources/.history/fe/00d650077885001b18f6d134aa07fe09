@@ -1,0 +1,9 @@
+package test;
+
+public class hshg {
+@test
+public void cc()
+{
+	System.out.println("nn");
+}
+}

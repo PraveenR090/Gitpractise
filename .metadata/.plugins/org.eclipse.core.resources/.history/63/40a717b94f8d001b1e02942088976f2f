@@ -1,0 +1,61 @@
+package com.crm.keepshopping.leadtest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.crm.comcast.genericutility.Baseclass1;
+import com.crm.comcast.objectrepositoryUtility.Homepage;
+import com.crm.comcast.objectrepositoryUtility.LeadInfo;
+import com.crm.comcast.objectrepositoryUtility.Leadpage;
+
+public class Tc_22 extends Baseclass1 {
+@Test
+public void convertlead()
+{
+	Homepage hp = new Homepage(driver);
+	hp.getLeadlink().click();
+	
+	Leadpage lp = new Leadpage(driver);
+	lp.getAnylead().click();
+	
+	LeadInfo li = new LeadInfo(driver);
+	li.getConvertleadlink().click();
+	
+	wlib.waitForElemnetVisibality(driver, li.getOpputunitytextbox());
+	li.getOpputunitytextbox().click();
+	
+	/*String date = jLib.getCurrentSystemDate();
+	System.out.println(date);
+	String[]arr = date.split(" ");
+	String year= arr[5];
+	System.out.println(year);
+	String month = arr[1];
+	System.out.println(month);
+	String date1 = arr[2];
+	System.out.println(date1);
+	li.getDatetxtbx().sendKeys(year+"-"+month+"-"+date1);*/
+	
+	li.getCalender().click();
+	
+
+	//WebElement date = driver.findElement(By.xpath("//table[//table[@style='visibility: visible;']/tbody/tr[2]/td[@class='day selected today']]"));
+	
+	li.getDatetxtbx().sendKeys("2021-03-09");
+	//date.click();
+	
+	li.getSavebtnn().click();
+	
+	String S1 = "Organization";
+	
+	String S2 = driver.getTitle();
+	
+	Assert.assertEquals(S2, S1);
+	
+	
+	 
+			
+}
+
+}

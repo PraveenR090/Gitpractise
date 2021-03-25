@@ -1,0 +1,7 @@
+package Employee;
+
+public class TestEmployee {
+public static void main(String[] args) {
+	Employee_details emp = new Employee_details("RAJKUMAR", 14522, "SINGLE", 98845846,7878778);
+}
+}

@@ -1,0 +1,17 @@
+package hdjd;
+
+import org.testng.annotations.Test;
+
+public class Aggg {
+@Test
+public void samplr()
+{
+	System.out.println("fif");
+}
+
+@Test
+public void samplr()
+{
+	System.out.println("fif");
+}
+}

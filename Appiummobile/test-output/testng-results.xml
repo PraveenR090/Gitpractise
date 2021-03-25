@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="30881" started-at="2021-03-10T07:20:04Z" finished-at="2021-03-10T07:20:35Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="30881" started-at="2021-03-10T07:20:04Z" finished-at="2021-03-10T07:20:35Z">
+      <class name="cpm.android.generalapp.test.Generaltest1">
+        <test-method status="PASS" signature="connectserver()[pri:0, instance:cpm.android.generalapp.test.Generaltest1@598067a5]" name="connectserver" is-config="true" duration-ms="1609" started-at="2021-03-10T12:50:02Z" finished-at="2021-03-10T12:50:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- connectserver -->
+        <test-method status="PASS" signature="LaunchApp()[pri:0, instance:cpm.android.generalapp.test.Generaltest1@598067a5]" name="LaunchApp" is-config="true" duration-ms="17173" started-at="2021-03-10T12:50:04Z" finished-at="2021-03-10T12:50:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LaunchApp -->
+        <test-method status="PASS" signature="createlogin()[pri:0, instance:cpm.android.generalapp.test.Generaltest1@598067a5]" name="createlogin" duration-ms="13691" started-at="2021-03-10T12:50:21Z" finished-at="2021-03-10T12:50:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createlogin -->
+      </class> <!-- cpm.android.generalapp.test.Generaltest1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
